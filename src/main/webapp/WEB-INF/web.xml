@@ -18,6 +18,24 @@
         <servlet-name>PersistenceWithJPAServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>EmployeeOData</servlet-name>
+        <servlet-class>org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet</servlet-class>
+        <init-param>
+        	<param-name>javax.ws.rs.Application</param-name>
+        	<param-value>org.apache.olingo.odata2.core.rest.app.ODataApplication</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>org.apache.olingo.odata2.service.factory</param-name>
+        	<param-value>servlets.ODataServiceFactory</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>EmployeeOData</servlet-name>
+        <url-pattern>/employee.svc/*</url-pattern>
+    </servlet-mapping>
 
     <!-- Declare the JNDI lookup of the default data source -->
     <resource-ref>
