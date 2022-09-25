@@ -10,9 +10,23 @@
 		<version.slf4j>1.7.1</version.slf4j>
 		<version.olingo>2.0.6</version.olingo>
 	</properties>
-	<!-- SAP HCP SDK dependency -->
-	<!-- OData Annotation Support -->
+
+
 	<dependencies>
+		<!-- SAP HCP SDK dependency -->
+		<dependency>
+			<groupId>com.sap.cloud</groupId>
+			<artifactId>neo-java-web-api</artifactId>
+			<version>3.159.5</version>
+			<exclusions>
+				<exclusion>
+					<!-- declare the exclusion here -->
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- OData Annotation Support -->
 		<dependency>
 			<groupId>org.apache.olingo</groupId>
 			<artifactId>olingo-odata2-api-annotation</artifactId>
@@ -67,10 +81,29 @@
 			<version>2.1.0</version>
 		</dependency>
 
+
+		<!-- JPA Support -->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.29</version>
+			<groupId>com.sap.security.core.server</groupId>
+			<artifactId>csi</artifactId>
+			<version>1.0.1</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/WebContent/WEB-INF/lib/com.sap.security.core.server.csi_1.0.1.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>jakarta.persistence</artifactId>
+			<version>2.2.3</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/WebContent/WEB-INF/lib/jakarta.persistence-2.2.3.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sap.db.jdbc</groupId>
+			<artifactId>ngdbc</artifactId>
+			<version>2.4.76</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/WebContent/WEB-INF/lib/ngdbc.jar</systemPath>
 		</dependency>
 
 		<!-- Web Support -->

@@ -24,8 +24,10 @@ import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 import model.Employee;
 
+import java.util.*;
 //import com.sap.security.core.server.csi.IXSSEncoder;
 //import com.sap.security.core.server.csi.XSSEncoder;
+import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 /**
  * Servlet implementing a simple JPA based persistence sample application for
@@ -47,10 +49,10 @@ public class PersistenceWithJPAServlet extends HttpServlet {
 			InitialContext ctx = new InitialContext();
 			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DefaultDB");
 //
-//            Map properties = new HashMap();
-//            properties.put(PersistenceUnitProperties.NON_JTA_DATASOURCE, ds);
-//            emf = Persistence.createEntityManagerFactory("odatatest", properties);
-			emf = Persistence.createEntityManagerFactory("odatatest");
+            Map properties = new HashMap();
+            properties.put(PersistenceUnitProperties.NON_JTA_DATASOURCE, ds);
+            emf = Persistence.createEntityManagerFactory("odatatest", properties);
+//			emf = Persistence.createEntityManagerFactory("odatatest");
 		} catch (NamingException e) {
 			throw new ServletException(e);
 		}
